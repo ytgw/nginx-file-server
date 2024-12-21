@@ -1,0 +1,10 @@
+services:
+  file-server:
+    image: 'nginx:alpine'
+    ports:
+      - '8080:80'
+    volumes:
+      - './conf.d/:/etc/nginx/conf.d/:ro'
+      - './static/:/usr/share/nginx/static/:ro'
+      # ブラウザで表示するのではなくダウンロードさせる
+      - './mime.types:/etc/nginx/mime.types:ro'
